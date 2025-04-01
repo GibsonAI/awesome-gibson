@@ -1,0 +1,49 @@
+research_company_task:
+  description: >
+    Conduct thorough research on {target_company}. Focus on their industry,
+    size, recent news, challenges they might be facing, and any information
+    that suggests they might benefit from {our_product}. Look for recent
+    technology initiatives or digital transformation efforts.
+  expected_output: >
+    A comprehensive overview of {target_company}, including key facts,
+    recent developments, and potential pain points that our product could address.
+
+analyze_org_structure_task:
+  description: >
+    Analyze the organizational structure of {target_company}. Identify key
+    departments and roles that are likely to be involved in decisions related
+    to purchasing {our_product}. Consider both technical decision-makers and
+    business stakeholders.
+  expected_output: >
+    A breakdown of {target_company}'s relevant organizational structure,
+    highlighting departments and roles that are potential stakeholders for
+    {our_product}.
+
+find_key_contacts_task:
+  description: >
+    Based on the organizational analysis, identify specific individuals at
+    {target_company} who are in positions to influence or make decisions about
+    purchasing {our_product}. Find their names, titles, and if possible,
+    professional contact information or LinkedIn profiles.
+  expected_output: >
+    A list of key contacts at {target_company}, including their names, titles,
+    departments, and any available contact information, LinkedIn URLs if possible phones and emails.
+    Create a json payload that looks like {"company_name": "Company Name", "contacts": [{"name": "Name", "title": "Title", "linkedin_url": "LinkedIn URL", "phone": "Phone", "email": "Email"}]}
+    Please ensure all json 
+    Post the json payload to the API endpoint using the ContactPosterTool.
+
+develop_approach_strategy_task:
+  description: >
+    Using all the gathered information about {target_company} and the identified
+    contacts, develop a strategy for approaching these individuals about
+    {our_product}. Consider the company's challenges, the contacts' roles,
+    and how our product can provide value to them.
+
+    REMOVE ANY COMMENT OR THINGS LIKE "my best complete final answer to the task"
+
+  expected_output: >
+    A ContactFinderResult object containing:
+    1. A concise company overview
+    2. A list of key contacts with their information
+    3. A tailored approach strategy for reaching out to these contacts about {our_product}
+    Must be Markdown-formatted for easy reading and sharing with the sales team.
