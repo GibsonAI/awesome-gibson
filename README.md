@@ -1,1 +1,1 @@
-# Example applications built with GibsonAI
+# Awesome apps built with GibsonAI
