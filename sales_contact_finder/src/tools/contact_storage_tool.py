@@ -1,13 +1,17 @@
 from crewai.tools import BaseTool
+from dotenv import load_dotenv
 from pydantic import Field
+import os
 import requests
 import json
 
+load_dotenv()  # Load environment variables from .env
 
-class ContactPosterTool(BaseTool):
-    name: str = "ContactPosterTool"
+
+class ContactStorageTool(BaseTool):
+    name: str = "ContactStorageTool"
     description: str = """
-    Posts contact information to an API endpoints. Expected payload format:
+    Saves contact information in a GibsonAI database using the hosted API. Expected payload format:
     {"company_name": "Company Name", "contacts": [{"name": "Name", "title": "Title", "linkedin_url": "LinkedIn URL", "phone": "Phone", "email": "Email"}]}
     if values for phone and email are not available, they should be set to "N/A"
     """
@@ -25,12 +29,20 @@ class ContactPosterTool(BaseTool):
         description="The API endpoint to post the contact information to"
     )
 
-    def __init__(self, api_url: str, api_key: str):
+    def __init__(self):
+        api_base_url = os.getenv("GIBSON_API_BASE_URL")
+        if not api_base_url:
+            raise ValueError("Missing GIBSON_API_BASE_URL in environment variables")
+
+        api_key = os.getenv("GIBSON_API_KEY")
+        if not api_key:
+            raise ValueError("Missing GIBSON_API_KEY in environment variables")
+
         super().__init__(
-            api_endpoint=api_url,
+            api_endpoint=api_base_url,
             api_key=api_key,
-            company_endpoint=f"{api_url}/v1/-/sales-company",
-            contact_endpoint=f"{api_url}/v1/-/sales-contact",
+            company_endpoint=f"{api_base_url}/v1/-/sales-company",
+            contact_endpoint=f"{api_base_url}/v1/-/sales-contact",
         )
 
     def _run(self, contact_info: str) -> str:

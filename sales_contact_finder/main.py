@@ -14,10 +14,10 @@ def run():
     crew = SalesContactFinderCrew()
 
     # Define your inputs
-    inputs = {
-        "target_company": "Workday",  # Replace with your target company
-        "our_product": "AI-powered sales contact finder",  # Replace with your product
-    }
+    target_company = input("Enter Target Company: ")
+    our_product = input("Describe out product: ")
+
+    inputs = {"target_company": target_company, "our_product": our_product}
 
     # Execute the crew with the inputs
     result = crew.crew().kickoff(inputs)
