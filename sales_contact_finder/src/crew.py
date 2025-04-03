@@ -2,7 +2,7 @@ from crewai_tools import ScrapeWebsiteTool, SerperDevTool
 
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
-from src.tools.api_poster import ContactPosterTool
+from src.tools.contact_storage_tool import ContactStorageTool
 
 
 @CrewBase
@@ -37,9 +37,7 @@ class SalesContactFinderCrew:
             tools=[
                 SerperDevTool(),
                 ScrapeWebsiteTool(),
-                ContactPosterTool(
-                    api_url="https://api.gibsonai.com", api_key="<gibsonai_api_key>"
-                ),
+                ContactStorageTool(),
             ],
             allow_delegation=False,
             verbose=True,

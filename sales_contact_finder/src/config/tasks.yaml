@@ -29,8 +29,7 @@ find_key_contacts_task:
     A list of key contacts at {target_company}, including their names, titles,
     departments, and any available contact information, LinkedIn URLs if possible phones and emails.
     Create a json payload that looks like {"company_name": "Company Name", "contacts": [{"name": "Name", "title": "Title", "linkedin_url": "LinkedIn URL", "phone": "Phone", "email": "Email"}]}
-    Please ensure all json 
-    Post the json payload to the API endpoint using the ContactPosterTool.
+    Post the json payload to the API endpoint using the ContactStorageTool.
 
 develop_approach_strategy_task:
   description: >
