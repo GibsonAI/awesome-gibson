@@ -12,16 +12,16 @@ from src.crew import SalesContactFinderCrew
 def run():
     # Create an instance of the crew
     crew = SalesContactFinderCrew()
-    
+
     # Define your inputs
     inputs = {
         "target_company": "Workday",  # Replace with your target company
         "our_product": "AI-powered sales contact finder",  # Replace with your product
     }
-    
+
     # Execute the crew with the inputs
     result = crew.crew().kickoff(inputs)
-    
+
     # Print the results
     print("\nResults:")
     print(result)
@@ -72,6 +72,6 @@ if __name__ == "__main__":
         sys.exit(1)
 
     command = sys.argv[1]
-    
+
     if command == "run":
         run()

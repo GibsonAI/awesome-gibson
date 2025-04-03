@@ -4,6 +4,7 @@ from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from src.tools.api_poster import ContactPosterTool
 
+
 @CrewBase
 class SalesContactFinderCrew:
     """SalesContactFinder crew"""
@@ -36,7 +37,9 @@ class SalesContactFinderCrew:
             tools=[
                 SerperDevTool(),
                 ScrapeWebsiteTool(),
-                ContactPosterTool(api_url="https://api.gibsonai.com", api_key="<gibsonai_api_key>")
+                ContactPosterTool(
+                    api_url="https://api.gibsonai.com", api_key="<gibsonai_api_key>"
+                ),
             ],
             allow_delegation=False,
             verbose=True,
@@ -77,7 +80,7 @@ class SalesContactFinderCrew:
         return Task(
             config=self.tasks_config["develop_approach_strategy_task"],
             agent=self.sales_strategist(),
-            output_file="buyer_contact.md",
+            output_file="output/buyer_contact.md",
         )
 
     @crew
@@ -88,5 +91,4 @@ class SalesContactFinderCrew:
             tasks=self.tasks,  # Automatically created by the @task decorator
             process=Process.sequential,
             verbose=True,
-            # process=Process.hierarchical, # In case you wanna use that instead https://docs.crewai.com/how-to/Hierarchical/
         )
