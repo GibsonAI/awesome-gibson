@@ -3,11 +3,6 @@ import sys
 
 from src.crew import SalesContactFinderCrew
 
-# This main file is intended to be a way for your to run your
-# crew locally, so refrain from adding necessary logic into this file.
-# Replace with inputs you want to test with, it will automatically
-# interpolate any tasks and agents information
-
 
 def run():
     # Create an instance of the crew
@@ -15,7 +10,7 @@ def run():
 
     # Define your inputs
     target_company = input("Enter Target Company: ")
-    our_product = input("Describe out product: ")
+    our_product = input("Describe your product: ")
 
     inputs = {"target_company": target_company, "our_product": our_product}
 
