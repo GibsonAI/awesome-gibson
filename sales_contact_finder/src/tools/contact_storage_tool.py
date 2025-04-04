@@ -69,9 +69,7 @@ class ContactStorageTool(BaseTool):
             company_id = response.json()["id"]
 
             # now insert contacts to the database
-            print(f"Contacts: {contacts}")
             for contact in contacts:
-                print(f"PostingContact: {contact}")
                 contact_payload = {
                     "company_id": company_id,
                     "name": contact["name"],
@@ -80,14 +78,11 @@ class ContactStorageTool(BaseTool):
                     "phone": contact["phone"],
                     "email": contact["email"],
                 }
-                print("Contact Payload: ", contact_payload)
                 response = requests.post(
                     self.contact_endpoint,
                     json=contact_payload,
                     headers={"X-Gibson-API-Key": self.api_key},
                 )
-                print("Response Status: ", response.status_code)
-                print("Response Text: ", response.text)
                 print(
                     f"Successfully posted contact {contact['name']} to API: {response.status_code}"
                 )
