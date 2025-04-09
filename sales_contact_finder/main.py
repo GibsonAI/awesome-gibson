@@ -63,7 +63,7 @@ def test():
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Please specify a command: run, train, test, or replay")
+        print("Please specify a command: run")
         sys.exit(1)
 
     command = sys.argv[1]
