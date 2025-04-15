@@ -1,8 +1,8 @@
 from crewai_tools import ScrapeWebsiteTool, SerperDevTool
+from src.tools.contact_storage_tool import ContactStorageTool
 
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
-from src.tools.contact_storage_tool import ContactStorageTool
 
 
 @CrewBase

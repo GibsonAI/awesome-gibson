@@ -1,9 +1,11 @@
-from crewai.tools import BaseTool
+import json
+import os
+
+import requests
 from dotenv import load_dotenv
 from pydantic import Field
-import os
-import requests
-import json
+
+from crewai.tools import BaseTool
 
 load_dotenv()  # Load environment variables from .env
 
@@ -16,34 +18,19 @@ class ContactStorageTool(BaseTool):
     if values for phone and email are not available, they should be set to "N/A"
     """
 
-    api_endpoint: str = Field(
-        description="The API endpoint to post the contact information to"
-    )
+    api_base_url: str = Field(description="The base URL of the GibsonAI API")
     api_key: str = Field(
         description="The API key associated with your GibsonAI project"
     )
-    company_endpoint: str = Field(
-        description="The API endpoint to post the company information to"
-    )
-    contact_endpoint: str = Field(
-        description="The API endpoint to post the contact information to"
-    )
 
     def __init__(self):
-        api_base_url = os.getenv("GIBSON_API_BASE_URL")
-        if not api_base_url:
-            raise ValueError("Missing GIBSON_API_BASE_URL in environment variables")
+        self.api_base_url = "https://api.gibsonai.com/v1/-"
+        self.api_key = os.getenv("GIBSONAI_API_KEY")
 
-        api_key = os.getenv("GIBSON_API_KEY")
-        if not api_key:
-            raise ValueError("Missing GIBSON_API_KEY in environment variables")
+        if not self.api_key:
+            raise ValueError("Missing GIBSONAI_API_KEY environment variable")
 
-        super().__init__(
-            api_endpoint=api_base_url,
-            api_key=api_key,
-            company_endpoint=f"{api_base_url}/v1/-/sales-company",
-            contact_endpoint=f"{api_base_url}/v1/-/sales-contact",
-        )
+        super().__init__()
 
     def _run(self, contact_info: str) -> str:
         try:
@@ -59,7 +46,7 @@ class ContactStorageTool(BaseTool):
             # insert company name to the database
             company_payload = {"name": company_name}
             response = requests.post(
-                self.company_endpoint,
+                f"{self.api_base_url}/sales-company",
                 json=company_payload,
                 headers={"X-Gibson-API-Key": self.api_key},
             )
@@ -79,7 +66,7 @@ class ContactStorageTool(BaseTool):
                     "email": contact["email"],
                 }
                 response = requests.post(
-                    self.contact_endpoint,
+                    f"{self.api_base_url}/sales-contact",
                     json=contact_payload,
                     headers={"X-Gibson-API-Key": self.api_key},
                 )

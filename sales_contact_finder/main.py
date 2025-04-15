@@ -70,3 +70,9 @@ if __name__ == "__main__":
 
     if command == "run":
         run()
+    elif command == "train":
+        train()
+    elif command == "test":
+        test()
+    elif command == "replay":
+        replay()
