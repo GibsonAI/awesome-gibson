@@ -1,0 +1,15 @@
+# Environment variables
+.env
+
+# Virtual environment
+.venv/
+
+# Python artifacts
+__pycache__/
+*.pyc
+
+# Package metadata
+*.egg-info/
+
+# Output files
+output/

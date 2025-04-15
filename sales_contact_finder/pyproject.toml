@@ -1,0 +1,17 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sales_contact_finder"
+version = "0.1.0"
+authors = [{ name = "GibsonAI" }]
+description = "A sales contact finder using CrewAI"
+requires-python = ">=3.8"
+dependencies = [
+    "crewai==0.108.0",
+    # Add other dependencies your project needs
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
