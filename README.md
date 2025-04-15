@@ -4,3 +4,7 @@
 # awesome-gibson 😎
 
 > Awesome apps built with GibsonAI
+
+## GibsonAI + CrewAI
+
+- [Sales Contact Finder](./sales_contact_finder/) - A plug-and-play crew that finds company contacts and stores them in your [GibsonAI](https://app.gibsonai.com) database.
