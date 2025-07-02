@@ -1,9 +1,10 @@
-import streamlit as st
 import asyncio
 import os
+
+import streamlit as st
 from dotenv import load_dotenv
+
 from agent import run_schema_to_pr_agent
-from typing import Dict, Any
 
 # Load environment variables
 load_dotenv()
@@ -27,7 +28,7 @@ st.set_page_config(
     page_icon="🔄",
     layout="wide",
     initial_sidebar_state="expanded",
-    menu_items={"Report a bug": "https://github.com/your-repo/issues"},
+    menu_items={"Report a bug": "https://github.com/GibsonAI/awesome-gibson/issues"},
 )
 
 # Title and Header
@@ -55,7 +56,7 @@ with st.sidebar:
 
     st.markdown("**Read more on GitHub Repo**")
     st.markdown(
-        "[Database Schema-to-PR Agent](https://github.com/GibsonAI/database-schema-to-pr-agent)"
+        "[Database Schema-to-PR Agent](https://github.com/GibsonAI/awesome-gibson/tree/main/database-schema-to-pr-agent)"
     )
 
     st.markdown("---")

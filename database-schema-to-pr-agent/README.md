@@ -171,13 +171,35 @@ The agent supports the following databases:
 
 ## 🛠️ Development
 
+### Code Formatting and Linting
+
+This project uses [Ruff](https://docs.astral.sh/ruff/) for code formatting and linting. 
+
+**Quick formatting:**
+```bash
+# Auto-fix linting issues and format code
+python format.py
+
+# Or run individually:
+uv run ruff check --fix .  # Fix linting issues
+uv run ruff format .       # Format code
+uv run ruff check .        # Check for remaining issues
+```
+
+**Ruff Configuration:**
+- Configured in `pyproject.toml`
+- Target Python 3.10+
+- Line length: 88 characters
+- Includes import sorting, code formatting, and comprehensive linting rules
+
 ### Project Structure
 
 ```
 ├── agent.py              # Main agent logic
 ├── app.py                # Streamlit web interface
 ├── llm_model.py          # LLM model configuration
-├── pyproject.toml        # Project dependencies
+├── format.py             # Code formatting script
+├── pyproject.toml        # Project dependencies and Ruff config
 ├── env.example           # Environment variables template
 └── README.md             # This file
 ```

@@ -1,19 +1,19 @@
 import asyncio
 import os
-from dotenv import load_dotenv
-from textwrap import dedent
-from agno.agent import Agent, RunResponse
-from agno.tools.mcp import MultiMCPTools
-from agno.storage.sqlite import SqliteStorage
-from agno.utils.log import logger
-from typing import Optional
-from llm_model import get_model
 import traceback
+from textwrap import dedent
 
+from agno.agent import Agent, RunResponse
+from agno.storage.sqlite import SqliteStorage
+from agno.tools.mcp import MultiMCPTools
+from agno.utils.log import logger
+from dotenv import load_dotenv
+
+from llm_model import get_model
 
 INSTRUCTIONS = dedent(
     """\
-    You are an intelligent Database Schema-to-PR Agent that helps developers manage database schema changes and corresponding Python model updates and 
+    You are an intelligent Database Schema-to-PR Agent that helps developers manage database schema changes and corresponding Python model updates and
     creating PRs with model changes on GitHub.
 
     CRITICAL: NEVER GENERATE PYTHON CODE IN MARKDOWN BLOCKS!
@@ -108,7 +108,7 @@ MODELS_DIR = os.getenv("MODELS_DIR", "models")
 
 
 async def run_schema_to_pr_agent(
-    message: str, model_id: Optional[str] = None, session_id: Optional[str] = None
+    message: str, model_id: str | None = None, session_id: str | None = None
 ) -> RunResponse:
     """
     Runs the Schema-to-PR agent with dual MCP connections (GibsonAI + GitHub) and session storage.
@@ -204,7 +204,7 @@ async def main():
         - language (varchar, default 'en')
         - created_at (timestamp)
         - updated_at (timestamp)
-        
+
         Then create a corresponding Python Pydantic model and submit a PR to GitHub.
         """
 
