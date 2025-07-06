@@ -100,7 +100,13 @@ Now you can install the agent project itself.
 
 ### Streamlit Web Interface
 
-1. **Start the application**:
+1. **Activate the Virtual Environment**:
+   ```bash
+   source .venv/bin/activate  # On Linux/macOS
+   .venv\Scripts\activate     # On Windows
+   ```
+
+2. **Start the application**:
    ```bash
    streamlit run app.py
    ```
