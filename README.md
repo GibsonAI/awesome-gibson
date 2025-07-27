@@ -14,4 +14,4 @@
 
 ## GibsonAI + React + TypeScript
 
-- [Travel Agency Management React App](./automatic-api-sync-database-changes/sample-travel-agency-react-app/) - A React-based travel agency management app that connects directly to GibsonAI's Data REST API for all CRUD operations.
+- [Travel Agency Management React App](./sample-travel-agency-react-app/) - A React-based travel agency management app that connects directly to GibsonAI's Data REST API for all CRUD operations.
